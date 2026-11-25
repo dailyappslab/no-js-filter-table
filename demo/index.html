@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>no-js-filter-table demo: fast-food protein</title>
+<style>
+body{font:16px/1.5 system-ui,sans-serif;max-width:900px;margin:0 auto;padding:24px 16px;color:#14181f}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+label{display:flex;flex-direction:column;font-weight:600;font-size:.9rem;gap:4px}input,select,button{font:inherit;padding:6px 8px}
+fieldset{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;border:0;padding:0}fieldset label{flex-direction:row;font-weight:400;align-items:center}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid #ddd}
+</style>
+</head>
+<body>
+<h1>no-js-filter-table demo</h1>
+<p>25 real rows from the <a href="https://github.com/dailyappslab/fast-food-protein-us">fast-food-protein-us</a> dataset. The full version with all 259 items is the <a href="https://health.dailyappslab.com/macroscout/protein-finder/">Protein Finder</a>. Turn JavaScript off and every row still shows, and the form still submits.</p>
+<form data-filter-table="results" data-count="count" method="get">
+  <label>Protein, at least (g) <input name="protein" type="number" min="0" step="5" value="25" data-filter="min"></label>
+  <label>Calories, at most <input name="cal" type="number" min="0" step="50" value="600" data-filter="max"></label>
+  <label>Menu <select name="meal" data-filter="eq"><option value="">Everything</option><option value="main">Main</option><option value="breakfast">Breakfast</option><option value="drink">Drinks</option></select></label>
+  <label>Sort by <select name="sort" data-sort><option value="-per,-protein">Protein per 100 calories</option><option value="-protein,cal">Most protein</option><option value="cal,-protein">Fewest calories</option><option value="sodium,-per">Least sodium</option></select></label>
+  <fieldset><legend>Chains</legend>
+    <label><input type="checkbox" name="chain" value="mcdonalds" data-filter="in" checked> McDonald's</label>
+    <label><input type="checkbox" name="chain" value="burger-king" data-filter="in" checked> Burger King</label>
+    <label><input type="checkbox" name="chain" value="subway" data-filter="in" checked> Subway</label>
+    <label><input type="checkbox" name="chain" value="starbucks" data-filter="in" checked> Starbucks</label>
+    <label><input type="checkbox" name="chain" value="chipotle" data-filter="in" checked> Chipotle</label>
+  </fieldset>
+  <p><button type="submit">Show matches</button> <button type="button" data-preset="protein=30&amp;cal=500">30 g under 500 cal</button> <button type="button" data-preset="protein=40&amp;cal=600">40 g under 600 cal</button></p>
+</form>
+<p id="count" aria-live="polite" data-template="{shown} of {total} items match."></p>
+<div class="wrap"><table id="results">
+  <thead><tr><th>Chain</th><th>Item</th><th>Calories</th><th>Protein (g)</th><th>Protein per 100 cal</th><th>Sodium (mg)</th></tr></thead>
+  <tbody>
+      <tr data-chain="mcdonalds" data-meal="main" data-cal="400" data-protein="31" data-per="7.8" data-sodium="1320"><td>McDonald&#x27;s</td><td>McCrispy Strips (3 piece)</td><td>400</td><td>31</td><td>7.8</td><td>1320</td></tr>
+      <tr data-chain="mcdonalds" data-meal="main" data-cal="530" data-protein="41" data-per="7.7" data-sodium="1760"><td>McDonald&#x27;s</td><td>McCrispy Strips (4 piece)</td><td>530</td><td>41</td><td>7.7</td><td>1760</td></tr>
+      <tr data-chain="mcdonalds" data-meal="main" data-cal="740" data-protein="48" data-per="6.5" data-sodium="1360"><td>McDonald&#x27;s</td><td>Double Quarter Pounder with Cheese</td><td>740</td><td>48</td><td>6.5</td><td>1360</td></tr>
+      <tr data-chain="mcdonalds" data-meal="main" data-cal="520" data-protein="30" data-per="5.8" data-sodium="1140"><td>McDonald&#x27;s</td><td>Quarter Pounder with Cheese</td><td>520</td><td>30</td><td>5.8</td><td>1140</td></tr>
+      <tr data-chain="mcdonalds" data-meal="main" data-cal="630" data-protein="36" data-per="5.7" data-sodium="1470"><td>McDonald&#x27;s</td><td>Quarter Pounder with Cheese Bacon</td><td>630</td><td>36</td><td>5.7</td><td>1470</td></tr>
+      <tr data-chain="burger-king" data-meal="main" data-cal="410" data-protein="35" data-per="8.5" data-sodium="940"><td>Burger King</td><td>Flame-Grilled Chicken Sandwich</td><td>410</td><td>35</td><td>8.5</td><td>940</td></tr>
+      <tr data-chain="burger-king" data-meal="main" data-cal="560" data-protein="43" data-per="7.7" data-sodium="1590"><td>Burger King</td><td>Bacon and Swiss Flame-Grilled Chicken Sandwich</td><td>560</td><td>43</td><td>7.7</td><td>1590</td></tr>
+      <tr data-chain="burger-king" data-meal="main" data-cal="230" data-protein="17" data-per="7.4" data-sodium="640"><td>Burger King</td><td>Honey Mustard Flame-Grilled Chicken Wrap</td><td>230</td><td>17</td><td>7.4</td><td>640</td></tr>
+      <tr data-chain="burger-king" data-meal="main" data-cal="240" data-protein="17" data-per="7.1" data-sodium="640"><td>Burger King</td><td>Classic Flame-Grilled Chicken Wrap</td><td>240</td><td>17</td><td>7.1</td><td>640</td></tr>
+      <tr data-chain="burger-king" data-meal="main" data-cal="110" data-protein="7" data-per="6.4" data-sodium="330"><td>Burger King</td><td>4 Pc. Chicken Fries</td><td>110</td><td>7</td><td>6.4</td><td>330</td></tr>
+      <tr data-chain="subway" data-meal="main" data-cal="410" data-protein="45" data-per="11" data-sodium="2270"><td>Subway</td><td>Subway Club Protein Bowl</td><td>410</td><td>45</td><td>11</td><td>2270</td></tr>
+      <tr data-chain="subway" data-meal="main" data-cal="380" data-protein="35" data-per="9.2" data-sodium="2420"><td>Subway</td><td>Buffalo Chicken Protein Bowl</td><td>380</td><td>35</td><td>9.2</td><td>2420</td></tr>
+      <tr data-chain="subway" data-meal="main" data-cal="470" data-protein="42" data-per="8.9" data-sodium="1850"><td>Subway</td><td>Sweet Onion Chicken Teriyaki Protein Bowl</td><td>470</td><td>42</td><td>8.9</td><td>1850</td></tr>
+      <tr data-chain="subway" data-meal="main" data-cal="300" data-protein="26" data-per="8.7" data-sodium="570"><td>Subway</td><td>Fresh Fit Grilled Chicken, 6-inch</td><td>300</td><td>26</td><td>8.7</td><td>570</td></tr>
+      <tr data-chain="subway" data-meal="main" data-cal="600" data-protein="52" data-per="8.7" data-sodium="1140"><td>Subway</td><td>Fresh Fit Grilled Chicken, footlong</td><td>600</td><td>52</td><td>8.7</td><td>1140</td></tr>
+      <tr data-chain="starbucks" data-meal="drink" data-cal="210" data-protein="31" data-per="14.8" data-sodium=""><td>Starbucks</td><td>Iced Sugar-Free Vanilla Protein Matcha, grande</td><td>210</td><td>31</td><td>14.8</td><td>n/a</td></tr>
+      <tr data-chain="starbucks" data-meal="drink" data-cal="210" data-protein="31" data-per="14.8" data-sodium=""><td>Starbucks</td><td>Iced Sugar-Free Caramel Protein Matcha, grande</td><td>210</td><td>31</td><td>14.8</td><td>n/a</td></tr>
+      <tr data-chain="starbucks" data-meal="drink" data-cal="150" data-protein="22" data-per="14.7" data-sodium=""><td>Starbucks</td><td>Iced Sugar-Free Vanilla Protein Latte, tall</td><td>150</td><td>22</td><td>14.7</td><td>n/a</td></tr>
+      <tr data-chain="starbucks" data-meal="drink" data-cal="340" data-protein="50" data-per="14.7" data-sodium=""><td>Starbucks</td><td>Iced Sugar-Free Vanilla Protein Matcha, venti</td><td>340</td><td>50</td><td>14.7</td><td>n/a</td></tr>
+      <tr data-chain="starbucks" data-meal="drink" data-cal="340" data-protein="50" data-per="14.7" data-sodium=""><td>Starbucks</td><td>Iced Sugar-Free Caramel Protein Matcha, venti</td><td>340</td><td>50</td><td>14.7</td><td>n/a</td></tr>
+      <tr data-chain="chipotle" data-meal="main" data-cal="230" data-protein="33" data-per="14.3" data-sodium=""><td>Chipotle</td><td>Chicken bowl, simple and light (our build)</td><td>230</td><td>33</td><td>14.3</td><td>n/a</td></tr>
+      <tr data-chain="chipotle" data-meal="main" data-cal="360" data-protein="41" data-per="11.4" data-sodium=""><td>Chipotle</td><td>Chicken bowl with black beans (our build)</td><td>360</td><td>41</td><td>11.4</td><td>n/a</td></tr>
+      <tr data-chain="chipotle" data-meal="main" data-cal="760" data-protein="81" data-per="10.7" data-sodium=""><td>Chipotle</td><td>Double High Protein Bowl</td><td>760</td><td>81</td><td>10.7</td><td>n/a</td></tr>
+      <tr data-chain="chipotle" data-meal="main" data-cal="545" data-protein="46" data-per="8.4" data-sodium=""><td>Chipotle</td><td>High Protein-High Fiber Bowl</td><td>545</td><td>46</td><td>8.4</td><td>n/a</td></tr>
+      <tr data-chain="chipotle" data-meal="main" data-cal="460" data-protein="35" data-per="7.6" data-sodium=""><td>Chipotle</td><td>High Protein-Low Calorie Bowl</td><td>460</td><td>35</td><td>7.6</td><td>n/a</td></tr>
+  </tbody>
+</table></div>
+<p>Numbers are from each chain's own US nutrition data, read in October 2026. CC BY 4.0, credit MacroScout by Daily Apps Lab.</p>
+<script src="../filter-table.js"></script>
+</body>
+</html>
