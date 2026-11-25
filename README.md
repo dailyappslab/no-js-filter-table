@@ -1,5 +1,7 @@
 # no-js-filter-table
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24541991.svg)](https://doi.org/10.5281/zenodo.24541991)
+
 A small script (about 6 KB, no dependencies) that filters and sorts a server-rendered HTML table. Every row is in the page's HTML, so the table works with JavaScript off and search engines can read all of it. With the script, the form filters the rows in place and keeps the filters in the URL, so a filtered list can be shared.
 
 It powers the [Protein Finder](https://health.dailyappslab.com/macroscout/protein-finder/), which filters 259 fast-food items by protein and calories. A 25-row copy of it is in [`demo/index.html`](demo/index.html).
