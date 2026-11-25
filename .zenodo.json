@@ -1,0 +1,12 @@
+{
+  "title": "no-js-filter-table: filter and sort a server-rendered HTML table",
+  "upload_type": "software",
+  "description": "<p>A small, dependency-free script that filters and sorts a server-rendered HTML table. Every row stays in the page's HTML, so the table works with JavaScript off and search engines can read it; with the script, the form filters rows in place and keeps the filters in the URL.</p><p>It powers the free Protein Finder: <a href=\"https://health.dailyappslab.com/macroscout/protein-finder/\">https://health.dailyappslab.com/macroscout/protein-finder/</a></p>",
+  "creators": [{"name": "Iqbal, Javed", "affiliation": "Daily Apps Lab"}],
+  "license": "mit",
+  "keywords": ["progressive enhancement", "html table", "table filter", "javascript", "accessibility"],
+  "related_identifiers": [
+    {"identifier": "https://health.dailyappslab.com/macroscout/protein-finder/", "relation": "isSupplementTo", "resource_type": "other"},
+    {"identifier": "10.5281/zenodo.24541969", "relation": "references", "resource_type": "dataset"}
+  ]
+}

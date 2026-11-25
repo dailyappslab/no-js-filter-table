@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "no-js-filter-table"
+abstract: "A small, dependency-free script that filters and sorts a server-rendered HTML table, keeps the filters in the URL, and leaves every row visible with JavaScript off."
+authors:
+  - given-names: Javed
+    family-names: Iqbal
+    affiliation: "Daily Apps Lab"
+    website: "https://dailyappslab.com/"
+version: "1.0.0"
+date-released: "2026-11-26"
+license: MIT
+url: "https://dailyappslab.github.io/no-js-filter-table/demo/"
+repository-code: "https://github.com/dailyappslab/no-js-filter-table"
+keywords:
+  - progressive enhancement
+  - html table
+  - table filter
+  - javascript
